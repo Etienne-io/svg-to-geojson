@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base",
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
+  "include": ["**/*.(e2e-)?spec.ts", "**/*.d.ts"]
+}

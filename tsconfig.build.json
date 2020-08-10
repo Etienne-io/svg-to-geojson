@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.base",
+  "include": ["lib/**/*"],
+  "exclude": ["node_modules", "**/*.(e2e-)?spec.ts"]
+}

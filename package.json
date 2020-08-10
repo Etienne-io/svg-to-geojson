@@ -1,0 +1,43 @@
+{
+  "name": "svg-to-geojson",
+  "version": "1.0.0",
+  "main": "build/main.js",
+  "types": "build/main.d.ts",
+  "bin": {
+    "svgeo": "build/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emerciercontexeo/svg-to-geojson.git"
+  },
+  "author": {
+    "name": "Etienne MERCIER",
+    "email": "etienne@mapwize.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/emerciercontexeo/svg-to-geojson/issues"
+  },
+  "files": ["build"],
+  "engines": {
+    "node": ">=12.16.0 <13"
+  },
+  "engineStrict": true,
+  "config": {
+    "engine-strict": true
+  },
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "build:watch": "yarn build --watch",
+    "build:typedoc": "typedoc --mode modules --tsconfig tsconfig.build.json --out ./typedoc/",
+    "format": "tslint -p tsconfig.base.json --fix --exclude \"node_modules/**\" \"**/*.ts\" && cross-env NODE_OPTIONS=\"--max_old_space_size=4096\" prettier --write \"**/*.{ts,js,json,yml,yaml}\"",
+    "lint": "tslint -p tsconfig.base.json -c tslint.json --exclude \"node_modules/**\" \"**/*.ts\"",
+    "clean": "rimraf build coverage typedoc",
+    "start": "ts-node --project tsconfig.build.json -r dotenv/config build/main.js dotenv_config_path=.env",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:cov": "yarn test --coverage",
+    "test:debug": "node --inspect node_modules/jest/bin/jest.js --watch --runInBand",
+    "prepublish": "yarn clean && yarn build"
+  }
+}
